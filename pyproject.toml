@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ldif-model"
+version = "0.1.0"
+description = "Latent Dual Interaction Flow neural architecture with response-conditioned gating and adaptive spectrum pruning."
+readme = "README.md"
+authors = [
+    {name = "Muhammad Muhaimin"},
+    {name = "Muhammad Waseem Ashraf"},
+    {name = "Shahzadi Tayyaba"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=1.9.0",
+    "numpy>=1.19.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/engrdrwaseem"
+Repository = "https://github.com/yourusername/ldif"
+Issues = "https://github.com/yourusername/ldif/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ldif*"]
