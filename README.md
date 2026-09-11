@@ -149,7 +149,7 @@ The defaults work well for moderate-sized datasets (up to ~10k samples for stati
 
 A good starting point for the L1 penalty is `mu = 0.01` for datasets with >10k samples, scaling down for smaller datasets.
 
-The initial draft of the paper explaining the model is titled **"LDIF: Latent Dual Interaction Flow"** and is currently under process and will be published on arXiv. For more details, please refer to the paper.
+The initial draft of the paper explaining the model is titled **"LDIF: Latent Dual Interaction Flow"** and is currently under process and will be published as pre-print soon. For more details, please refer to the paper when it will be available.
 
 ## Difference Between LDIFStatic and LDIFSequential
 
