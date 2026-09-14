@@ -159,7 +159,7 @@ For the `z_init_mean` value, or the initialization of the spectrum values, the s
 
 In our experiments, these configurations for the initialization and input scaling were found to work effectively for their respective data types.
 ## When to use LDIF
-1. **Very low FLOP count.** LDIF's low-rank formulation delivers dramatically fewer FLOPs than dense architectures at the same accuracy.
+1. **Very low FLOP count.** LDIF's low-rank formulation delivers dramatically fewer FLOPs than dense architectures at the same/higher accuracy.
 
 2. **Mixed static + sequential features.** Handles both modalities in a single architecture. Static features initialize the hidden state, temporal features drive the dynamics. No separate encoder needed.
 
