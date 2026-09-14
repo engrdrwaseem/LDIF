@@ -149,8 +149,6 @@ The defaults work well for moderate-sized datasets (up to ~10k samples for stati
 
 A good starting point for the L1 penalty is `mu = 0.01` for datasets with >10k samples, scaling down for smaller datasets.
 
-The initial draft of the paper explaining the model is titled **"LDIF: Latent Dual Interaction Flow"** and is currently under process and will be published as pre-print soon. For more details, please refer to the paper when it will be available.
-
 ## Difference Between LDIFStatic and LDIFSequential
 
 The underlying model architecture is the same. The main difference is that `LDIFStatic` is designed for static/tabular data. It uses stronger input scaling (`2.0`) and lower decay (`gamma=0.01`) to capture feature interactions, with positional encoding disabled.
@@ -160,3 +158,21 @@ The underlying model architecture is the same. The main difference is that `LDIF
 For the `z_init_mean` value, or the initialization of the spectrum values, the static variant uses a value of `1.0`, so the spectrum starts near `0.73`. For the sequential variant, to promote stability and prevent any type of exploding gradients, the value is set to `-2.0`, so the spectrum value starts near `0.12`.
 
 In our experiments, these configurations for the initialization and input scaling were found to work effectively for their respective data types.
+## When to use LDIF
+1. **Very low FLOP count.** LDIF's low-rank formulation delivers dramatically fewer FLOPs than dense architectures at the same accuracy.
+
+2. **Mixed static + sequential features.** Handles both modalities in a single architecture. Static features initialize the hidden state, temporal features drive the dynamics. No separate encoder needed.
+
+3. **Sequential tasks with long sequences.** Scales linearly with sequence length and can perform higher then SOTA models if properly tuned.
+
+4. **Low-compute environments.** Runs on a single mid-range GPU or CPU thanks to its parameter-efficient design. However the training time might be higher simply due to large number of matrix multiplication, but in any case it will not demand high memory usage as seen in our tests.
+
+5. **Interpretability.** The symmetric/skew-symmetric split reveals whether each feature contributes cooperative or rotational dynamics, and the gate exposes per-feature routing. Its useful in scientific domains and physics based data as they have various percentages of symmetric and skew symmetric data.
+
+## Cite as
+The initial pre print explaining the model is titled **"LDIF: Latent Dual Interaction Flow"** and is currently posted at research square. The citation for the paper and its doi is: 
+
+**_Muhammad Muhaimin, Muhammad Waseem Ashraf and Shahzadi Tayyaba. LDIF: Latent Dual Interaction Flow, 14 September 2026, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-11003616/v1]_
+**
+
+
